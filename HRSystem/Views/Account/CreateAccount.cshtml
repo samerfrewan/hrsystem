@@ -1,0 +1,111 @@
+﻿@model signupmodel
+@{
+    Layout = "~/views/shared/layoutpage.cshtml";
+}
+
+@section body
+
+{
+    <form method="post" >
+        <span id="s"> Welcome To HR System </span>
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-2">
+
+                    <span> Name</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="text" class="form-control" asp-for="name" />
+                    
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-2">
+
+                    <span> BDate</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="datetime" class="form-control" asp-for="Bdate" />
+                   
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-2">
+
+                    <span> User Name</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="text" class="form-control" asp-for="username"/>
+                    
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-2">
+
+                    <span> Email</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="email" class="form-control" asp-for="email"/>
+                    
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-2">
+
+                    <span> Password</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="password" class="form-control" asp-for="password" />
+                    
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-2">
+
+                    <span> Confirm Password</span>
+
+                </div>
+                <div class="col-xs-5">
+
+                    <input type="password" class="form-control" asp-for="confirmpassword" />
+                    
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+               
+                <div class="col-xs-3" style="margin-left: 482px">
+                  
+                   <input type="submit" value="save" class="btn btn-primary" asp-action="CreateAccount" />
+                   
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+}

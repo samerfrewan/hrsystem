@@ -1,0 +1,82 @@
+﻿
+@model List<department>
+
+@{
+    Layout = "~/views/shared/layoutpage.cshtml";
+}
+
+
+@section body
+
+{
+
+    <form method="post">
+        <span  id="s"> Welcome To HR System </span>
+        <div class="container" style=" width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row">
+
+                <div class="col-xs-1">
+
+                    <span> Name</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" name="txtname" />
+
+                </div>
+
+                <div class="col-xs-2">
+
+                    <input type="submit" value="search" class="btn btn-primary" asp-action="search" />
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row" style="margin-top:20px">
+
+                <table class=" table table-hover " >
+                    <thead>
+
+                        <tr>
+
+                            <th> name </th>
+                            <th> Description</th>
+                            <th> option</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (department item in Model)
+                        {
+                            <tr>
+
+                                <td> @item.name </td>
+                                <td>@item.description</td>
+                                <td>
+                                    <input type="submit" class="btn btn-primary" value="employee" asp-controller="employee" asp-action="loaddept" asp-route-dept_id="@item.id" />
+                                    <input type="submit" class="btn btn-danger" value="delete" asp-action="delete" asp-route-id="@item.id" />
+                                    <input type="submit" class="btn btn-success" value="edit" asp-action="edit" asp-route-id="@item.id" />
+
+</tr>
+                        }
+                    </tbody>
+
+                </table>
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </form>
+}
+

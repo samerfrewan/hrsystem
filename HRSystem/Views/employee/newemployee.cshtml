@@ -1,0 +1,223 @@
+﻿
+@model vmemployee
+
+
+@{
+
+    Layout = "~/views/shared/layoutpage.cshtml";
+}
+
+@section head
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#ddlcountry").change(function () {
+
+
+
+                $.ajax({
+
+                    type: 'get',
+                    url: '/HRSystem/employee/loadcity?country_id=' + $("#ddlcountry").val(),
+                    success: function (data) {
+                        $('#ddlcity option').remove();
+                        $(data).each(function () {
+                          
+                            $('#ddlcity').append("<option value=" + $(this).prop('id') + ">" + $(this).prop('name') + "</option>");
+                        })
+                    },
+                    error: function (error) {
+
+                        alert("loading city error")
+                    }
+                })
+            })
+        })
+    </script>
+
+ }
+@section body
+
+{
+    <form method="post" enctype="multipart/form-data">
+        <span id="s"> Welcome To HR System </span>
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:20px">
+                <input type="hidden" asp-for="employee.id"/>
+                <div class="col-xs-1">
+
+                    <span>First Name</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" class="form-control" asp-for="employee.firstname" />
+
+                </div>
+                <div class="col-xs-1">
+
+                    <span> Last Name</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" class="form-control" asp-for="employee.lastname" />
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>phone</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" class="form-control" asp-for="employee.phone" />
+
+                </div>
+                <div class="col-xs-1">
+
+                    <span> gender</span>
+
+                </div>
+                <div class="col-xs-4">
+
+
+                    <select asp-for="employee.gender">
+                        <option> male</option>
+                        <option> female</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>country</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <select class="form-control" asp-for="employee.country_id" id="ddlcountry" asp-items='new SelectList(Model.licountry ,"id","name") '>
+                    </select>
+
+                </div>
+                <div class="col-xs-1">
+
+                    <span> city </span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <select class="form-control" asp-for="employee.city_id" id="ddlcity"  >
+                    </select>
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>Address</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" class="form-control" asp-for="employee.address" />
+
+                </div>
+                <div class="col-xs-1">
+
+                    <span> Email</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" class="form-control" asp-for="employee.email" />
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>Salary </span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" class="form-control" asp-for="employee.salary" />
+
+                </div>
+                <div class="col-xs-1">
+
+                    <span> expected salary </span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" class="form-control" asp-for="employee.expectedsalary" />
+
+                </div>
+            </div>
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>department </span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <select class="form-control" asp-for="employee.department_id" asp-items='new SelectList(Model.lidepartment,"id","name") '>
+                    </select>
+
+                </div>
+                <div class="col-xs-1">
+
+                    <span> hierdate </span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="date" class="form-control" asp-for="employee.hiredate" />
+                    <span asp-validation-for="employee.hiredate"></span>
+                </div>
+            </div>
+
+
+
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span> Profile Picture </span>
+
+                </div>
+                <div class="col-xs-4" >
+                    <input type="hidden" asp-for="employee.path" />
+                    <input type="file"  asp-for="employee.image"   />
+                    <span asp-validation-for="employee.image"></span>
+                </div>
+
+            </div>
+            <div class=" row" style="margin-top:10px">
+
+                <div class="col-xs-3" style="margin-left: 727px">
+                    @if((bool)ViewData["IsEdited"] == false)
+                    {<input type="submit" value="save" class="btn btn-primary" asp-action="save" />}
+                    else
+                    { <input type="submit" value="update" class="btn btn-primary" asp-action="update" />}
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+}

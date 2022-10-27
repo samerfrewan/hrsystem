@@ -1,0 +1,77 @@
+﻿@model List<city>
+@{
+    Layout = "~/views/shared/layoutpage.cshtml";
+}
+
+@section body
+
+{
+
+    <form method="post">
+        
+            <span id="s"> Welcome To HR System </span>
+       
+
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:20px">
+
+                <div class="col-xs-1">
+
+                    <span>name</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input type="text" name="txtname" />
+
+                </div>
+
+                <div class="col-xs-2">
+
+                    <input type="submit" value="search" class="btn btn-primary" asp-action="search" />
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row" style="margin-top:20px">
+
+                <table class=" table table-hover ">
+                    <thead>
+                        <tr>
+
+                            <th>id </th>
+                            <th>name </th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        @foreach (city item in Model)
+                        {
+                            <tr>
+
+                                <th>@item.id </th>
+                                <th>@item.name </th>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </form>
+}
+

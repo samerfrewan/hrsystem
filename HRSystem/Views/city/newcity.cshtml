@@ -1,0 +1,63 @@
+﻿@model vmcity
+@{
+    Layout = "~/views/shared/layoutpage.cshtml";
+}
+
+@section Body
+
+
+{
+
+    <form method="post">
+        <span id="s"> Welcome To HR System </span>
+
+        <div class="container" style="width: 975px; position: fixed; margin-top: 20px;">
+            <div class=" row" style="margin-top:10px">
+
+                <div class="col-xs-1">
+
+                    <span> name</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <input class="form-control" type="text" asp-for="city.name" />
+
+                </div>
+
+
+                <div class="col-xs-1">
+
+                    <span> country</span>
+
+                </div>
+                <div class="col-xs-4">
+
+                    <select class="form-control" asp-for="city.country_id" asp-items='new SelectList(Model.licountry,"id","name") '></select>
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class=" row" style="margin-top:10px">
+
+                <div class="col-xs-3" style="text-align: right; margin-left: 585px;">
+
+                    <input type="submit" value="save" class="btn btn-primary" asp-action="save" />
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </form>
+
+
+
+
+}
